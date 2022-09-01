@@ -8,7 +8,7 @@ export const score = (p, n) => {
     return 0
   }
   const r = ((p + 1.9208) / (p + n) - 1.96 * Math.sqrt(p * n / (p + n) + 0.9604) / (p + n)) / (1 + 3.8416 / (p + n))
-  return Number(r.toFixed(2))
+  return Number(r.toFixed(4))
 }
 
 export const rate = (rating) => {
@@ -17,10 +17,10 @@ export const rate = (rating) => {
   let n = rating[0]
   let p = rating[size - 1]
 
-  const step = (1 / (size - 1)).toFixed(2)
+  const step = (1 / (size - 1)).toFixed(4)
   const totalStep = size - 1
   for (let i = 1; i < totalStep; i++) {
-    const ep = (step * i).toFixed(2)
+    const ep = (step * i).toFixed(4)
     p += rating[i] * ep
     n += rating[totalStep - i] * ep
   }
@@ -43,5 +43,5 @@ export const average = (rating) => {
     k++
   })
   const r = sum / total
-  return Number(r.toFixed(1))
+  return Number(r.toFixed(4))
 }
